@@ -4,8 +4,15 @@
 <dt>ID</dt>
 <dd><%= @the_user.id%></dt>
 
-<dt>Edit User</dt>
-<dd>form</dt>
+<dt>Edit user</dt>
+<dd>
+    <form action="/update_user/117">
+      <label for="browser_username">Username</label>
+      <input id="browser_username" type="text" name="input_username" placeholder="Enter a username..." value="anisa">
+
+      <button>Update user</button>
+    </form>
+  </dd>
 </dl>
 
 <h2> Own photos (<%= @the_user.own_photos.count %>) </h2>
@@ -28,8 +35,6 @@
     </td>
     <td><%= a_photo.caption %></td>
     <td><%= a_photo.created_at %></td>
-    <td> Show details</td>
-# <a href="/photos/<%= a_photo.id %>"></a>
+    <td> <a href="/photos/<%= a_photo.id %>"> Show details</a> </td>
   <% end %>
-
   </tr>

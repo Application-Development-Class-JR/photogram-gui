@@ -19,5 +19,19 @@ class UsersController < ApplicationController
       render ({ :template => "users_templates/show.html.erb" })
     end
   end
+
+  def create_user
+
+    input_username = params.fetch("query_username")
+
+    a_new_user = User.new
+
+    a_new_user.username = input_username
+
+    a_new_user.save
+
+    redirect_to("/users/" + a_new_user.username)
+    #render ({ :template => "users_templates/create_user.html.erb" })
+  end
 end
  

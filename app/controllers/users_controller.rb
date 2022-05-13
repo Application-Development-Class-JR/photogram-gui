@@ -37,21 +37,19 @@ class UsersController < ApplicationController
 
 
   def update
-
-    the_user_id = params.fetch("path_photo_id")
-    matching_user_id = User.where({ :id => the_user_id })
-    the_user = matching_user_id.at(0)
+    #Parameters: {"query_username"=>"anisaaaaa", "path_user_id"=>"117"}  
+    user_id = params.fetch("path_user_id")
+    matching_users = User.where({:id => user_id})
+    the_user = matching_users.at(0)
 
     input_username = params.fetch("query_username")
-    
     the_user.username = input_username
-    
-    the_user.username.save
 
+    the_user.save
 
-    render ({ :template => "users_templates/update.html.erb" })
-    #next_url = "/users/" + the_user.id.to_s
-    #redirect_to(next_url)
+    #render ({ :template => "users_templates/update.html.erb" })
+    next_url = "/users/" + the_user.username.to_s
+    redirect_to(next_url)
   end
 
 end
